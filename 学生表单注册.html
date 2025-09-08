@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>个人社保计算软件</title>
+		<!-- 新 Bootstrap5 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		 
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<title></title>
+		<style>
+			#loginBtn {
+			    width: 185px;
+			    height: 40px;
+			    background-color: #00aaff;
+			    border: none;
+			    border-radius: 5px;
+			    color: white;
+			    font-size: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container text-center">
+			<h2>学生注册表单</h2>
+		</div>
+		<form onsubmit="return form_va()">
+			<label for="name">姓名:</label>
+			<br>
+			<input id="name" class="form-control" name="name" placeholder="请输入您的姓名"/>
+			<br>
+			<label for="number">手机号:</label>
+			<br>
+			<input id="number" class="form-control" name="number"  placeholder="请输入11位手机号"/>
+			<br>
+			<label for="email">邮箱:</label>
+			<br>
+			<input id="email" class="form-control" name="email" placeholder="可选,如:student@school.com"/>
+			<br>
+			<label for="password">密码:</label>
+			<br>
+			<input id="password" class="form-control" name="password"  placeholder="至少6位,包含字母和数字"/>
+			<br>
+			<label for="password2">确认密码:</label>
+			<br>
+			<input id="password2" class="form-control" name="password2"  placeholder="请再次输入密码"/>
+			<br>
+		</form>
+		<br>
+		<button id="loginBtn" onclick="form_va()">注册</button>
+	</body>
+	<script> 
+		function form_va(){
+			let name = document.getElementById("name");
+			let reg=/^\w{2,8}$/;
+			if(reg.test(name.value)){
+				// 姓名验证通过，继续验证手机号
+				let number = document.getElementById("number");
+				let reg=/^[0-9]{11}$/;
+				if(reg.test(number.value)){
+					// 手机号验证通过，继续验证邮箱
+					let email = document.getElementById("email");
+					// 邮箱是可选的，如果为空则跳过验证
+					if(email.value === ""){
+						// 邮箱为空，跳过验证，继续验证密码
+						let password = document.getElementById("password");
+						let reg=/^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+						if(reg.test(password.value)){
+							// 密码验证通过，继续验证确认密码
+							let password2 = document.getElementById("password2");
+							if(password.value === password2.value){
+								// 所有验证通过
+								alert("注册成功！");
+								return true;
+							}else{
+								alert("两次输入的密码不一致");
+								return false;
+							}
+						}else{
+							alert("密码格式不正确，至少6位且包含字母和数字");
+							return false;
+						}
+					}else{
+						// 邮箱不为空，进行验证
+						let reg = /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.(com|cn|gov\.cn|org)$/;
+						if(reg.test(email.value)){
+							// 邮箱验证通过，继续验证密码
+							let password = document.getElementById("password");
+							let reg=/^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+							if(reg.test(password.value)){
+								// 密码验证通过，继续验证确认密码
+								let password2 = document.getElementById("password2");
+								if(password.value === password2.value){
+									// 所有验证通过
+									alert("注册成功！");
+									return true;
+								}else{
+									alert("两次输入的密码不一致");
+									return false;
+								}
+							}else{
+								alert("密码格式不正确，至少6位且包含字母和数字");
+								return false;
+							}
+						}else{
+							alert("邮箱格式不正确");
+							return false;
+						}
+					}
+				}else{
+					alert("手机号格式不正确");
+					return false;
+				}
+			}else{
+				alert("姓名格式不正确");
+				return false;
+			}
+		}
+	</script>
+</html>
