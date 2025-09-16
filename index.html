@@ -1,123 +1,170 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>个人社保计算软件</title>
-		<!-- 新 Bootstrap5 核心 CSS 文件 -->
-		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
-		 
-		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
-		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-		<script>
-			function cala(){
-				sal=document.getElementById("salary").value;
-				salnum=parseInt(sal);
-				yl=salnum*0.08;
-				yl2=salnum*0.2;
-				document.getElementById("yl").innerText=yl;
-				document.getElementById("yl2").innerText=yl2;
-				yb=salnum*0.02;
-				yb2=salnum*0.06;
-				document.getElementById("yb").innerText=yb;
-				document.getElementById("yb2").innerText=yb2;
-				sy=salnum*0.005;
-				sy2=salnum*0.015;
-				document.getElementById("sy").innerText=sy;
-				document.getElementById("sy2").innerText=sy2;
-				gs2=salnum*0.005;
-				document.getElementById("gs2").innerText=gs2;
-				sy4=salnum*0.008;
-				document.getElementById("sy4").innerText=sy4;
-				gjj=salnum*0.12;
-				gjj2=salnum*0.12;
-				document.getElementById("gjj").innerText=gjj;
-				document.getElementById("gjj2").innerText=gjj2;
-				hj=salnum*0.08+salnum*0.02+salnum*0.005+salnum*0.12;
-				document.getElementById("hj").innerText=hj;
-				hj2=salnum*0.2+salnum*0.06+salnum*0.015+salnum*0.12+salnum*0.005+salnum*0.008;
-				document.getElementById("hj2").innerText=hj2;
-				ze=salnum*0.08+salnum*0.02+salnum*0.005+salnum*0.12+salnum*0.2+salnum*0.06+salnum*0.015+salnum*0.12+salnum*0.005+salnum*0.008;
-				document.getElementById("ze").innerText=ze;
-			}
-		</script>
-	</head>
-	<body>
-		<div class="container text-center">
-			<h2>个人社保计算软件-中北大学-软件学院</h2>
-			<table class="table table-bordered text-center">
-				<tr>
-					<td>工资</td>
-					<td colspan="3">
-						<input class="form-control "type="text" id="salary" placeholder="请输入工资"/>
-					</td>
-					<td>
-						<button onclick="cala()" class="btn btn-danger btn-block">计算</button>
-					</td>
-				</tr>
-				<tr class="bg-primary text-white">
-					<td>险种</td>
-					<td>个人%</td>
-					<td>个人</td>
-					<td>公司%</td>
-					<td>公司</td>
-				</tr>
-				<tr>
-					<td>养老</td>
-					<td>8%</td>
-					<td id="yl"></td>
-					<td>20%</td>
-					<td id="yl2"></td>
-				</tr>
-				<tr>
-					<td>医保</td>
-					<td>2%</td>
-					<td id="yb"></td>
-					<td>6%</td>
-					<td id="yb2"></td>
-				</tr>
-				<tr>
-					<td>失业</td>
-					<td>0.5%</td>
-					<td id="sy"></td>
-					<td>1.5%</td>
-					<td id="sy2"></td>
-				</tr>
-				<tr>
-					<td>工伤</td>
-					<td></td>
-					<td></td>
-					<td>0.5%</td>
-					<td id="gs2"></td>
-				</tr>
-				<tr>
-					<td>生育</td>
-					<td></td>
-					<td></td>
-					<td>0.8%</td>
-					<td id="sy4"></td>
-				</tr>
-				<tr>
-					<td>公积金</td>
-					<td>12%</td>
-					<td id="gjj"></td>
-					<td>12%</td>
-					<td id="gjj2"></td>
-				</tr>
-				<tr>
-					<td>合计</td>
-					<td>个人合计</td>
-					<td id="hj"></td>
-					<td>公司合计</td>
-					<td id="hj2"></td>
-				</tr>
-				<tr>
-					<td>总额</td>
-					<td id="ze" colspan="4">
-						
-					</td>
-				</tr>
-			</table>
-		</div>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>新闻发布系统</title>
+    <meta name="keywords" content="layuimini,layui,layui模板,layui后台,后台模板,admin,admin模板,layui mini">
+    <meta name="description" content="layuimini基于layui的轻量级前端后台管理框架，最简洁、易用的后台框架模板，面向所有层次的前后端程序,只需提供一个接口就直接初始化整个框架，无需复杂操作。">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/layuimini.css?v=2.0.4.2" media="all">
+    <link rel="stylesheet" href="css/themes/default.css" media="all">
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style id="layuimini-bg-color">
+    </style>
+</head>
+<body class="layui-layout-body layuimini-all">
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-header header">
+        <div class="layui-logo layuimini-logo"></div>
+
+        <div class="layuimini-header-content">
+            <a>
+                <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
+            </a>
+
+            <!--电脑端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-menu-header-pc layuimini-pc-show">
+            </ul>
+
+            <!--手机端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-mobile-show">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                    <dl class="layui-nav-child layuimini-menu-header-mobile">
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
+                </li>
+                <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
+                </li>
+                <li class="layui-nav-item layuimini-setting">
+                    <a href="javascript:;">admin</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                        </dd>
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" class="login-out">退出登录</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>
+                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--无限极左侧菜单-->
+    <div class="layui-side layui-bg-black layuimini-menu-left">
+    </div>
+
+    <!--初始化加载层-->
+    <div class="layuimini-loader">
+        <div class="layuimini-loader-inner"></div>
+    </div>
+
+    <!--手机端遮罩层-->
+    <div class="layuimini-make"></div>
+
+    <!-- 移动导航 -->
+    <div class="layuimini-site-mobile"><i class="layui-icon"></i></div>
+
+    <div class="layui-body">
+
+        <div class="layuimini-tab layui-tab-rollTool layui-tab" lay-filter="layuiminiTab" lay-allowclose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
+            </ul>
+            <div class="layui-tab-control">
+                <li class="layuimini-tab-roll-left layui-icon layui-icon-left"></li>
+                <li class="layuimini-tab-roll-right layui-icon layui-icon-right"></li>
+                <li class="layui-tab-tool layui-icon layui-icon-down">
+                    <ul class="layui-nav close-box">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;"><span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;" layuimini-tab-close="current">关 闭 当 前</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="other">关 闭 其 他</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="all">关 闭 全 部</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <div class="layui-tab-content">
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script>
+    layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            miniAdmin = layui.miniAdmin,
+            miniTongji = layui.miniTongji;
+
+        var options = {
+            iniUrl: "api/init.json",    // 初始化接口
+            clearUrl: "api/clear.json", // 缓存清理接口
+            urlHashLocation: true,      // 是否打开hash定位
+            bgColorDefault: false,      // 主题默认配置
+            multiModule: true,          // 是否开启多模块
+            menuChildOpen: false,       // 是否默认展开菜单
+            loadingTime: 0,             // 初始化加载时间
+            pageAnim: true,             // iframe窗口动画
+            maxTabNum: 20,              // 最大的tab打开数量
+        };
+        miniAdmin.render(options);
+
+        // 百度统计代码，只统计指定域名
+        miniTongji.render({
+            specific: true,
+            domains: [
+                '99php.cn',
+                'layuimini.99php.cn',
+                'layuimini-onepage.99php.cn',
+            ],
+        });
+
+        $('.login-out').on("click", function () {
+            layer.msg('退出登录成功', function () {
+                window.location = 'page/login-3.html';
+            });
+        });
+    });
+</script>
+</body>
 </html>
